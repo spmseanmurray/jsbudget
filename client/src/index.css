@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+input:-webkit-autofill{
+  -webkit-text-fill-color: rgb(166, 173, 186) !important;
+  -webkit-box-shadow: 0 0 0 25px #2A303C inset !important;
+}
