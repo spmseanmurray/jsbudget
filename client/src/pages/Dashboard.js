@@ -3,14 +3,14 @@ import CategoryBreakdownCard from '../components/card/CategoryBreakdownCard';
 import MonthlyTotalCard from '../components/card/MonthlyTotalCard';
 import RecentTransactionsCard from '../components/card/RecentTransactionsCard';
 import YearlyTotalCard from '../components/card/YearlyTotalCard';
-import CategoryLineChart from '../components/graph/CategoryLineChart';
+import CategoryLineChartCard from '../components/card/CategoryLineChartCard';
 
 function Dashboard() {
   return (
     <div className="flex flex-grow justify-between">
       <div className="flex flex-col justify-around mx-4">
         <CategoryBreakdownCard />
-        <CategoryLineChart />
+        <CategoryLineChartCard />
       </div>
       <div className="flex flex-col justify-around mx-4">
         <MonthlyTotalCard />

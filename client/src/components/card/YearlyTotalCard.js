@@ -26,7 +26,9 @@ function YearlyTotalCard() {
       <div className="card-body">
         <div className="flex flex-row justify-between">
           <div className="card-title text-secondary">This Year</div>
-          <div className="radial-progress text-success" style={{ '--value': total.saving, '--size': '3rem' }}>{`${total.saving}%`}</div>
+          {total.saving > 0
+            ? <div className="radial-progress text-success" style={{ '--value': total.saving, '--size': '3rem' }}>{`${total.saving}%`}</div>
+            : null}
         </div>
         <div className="stats">
           <TotalStat title="Income" total={total.income} type="income" start={yearStart} end={yearEnd} />

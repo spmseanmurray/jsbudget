@@ -26,3 +26,17 @@ export const sumBudgetByCategoryAndSort = (budget, start, end) => budget.reduce(
   }
   return res;
 }, []).sort((a, b) => a.total - b.total);
+
+export const sumBudgetByMonth = (budget) => budget.reduce((res, curr) => {
+  const labelIndex = res.findIndex(({ label }) => label === moment(curr.budgetDate).format('MMM, YYYY'));
+
+  if (labelIndex !== -1) {
+    res[labelIndex].total += curr.budgetAmount;
+  } else {
+    res.push({
+      total: curr.budgetAmount,
+      label: moment(curr.budgetDate).format('MMM, YYYY'),
+    });
+  }
+  return res;
+}, []);
