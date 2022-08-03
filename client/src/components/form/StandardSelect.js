@@ -10,7 +10,7 @@ function StandardSelect({
         <option key="" value="" hidden>
           {placeholder}
         </option>
-        {options.map((option) => <option key={option} value={option} className="min-h-3">{option}</option>)}
+        {options.map((option) => <option key={option} value={option}>{option}</option>)}
       </select>
     </div>
   );

@@ -28,7 +28,7 @@ const renderActiveShape = (props) => {
         startAngle={startAngle}
         endAngle={endAngle}
         fill={fill}
-        fillOpacity="70%"
+        fillOpacity="110%"
       />
       <Sector
         cx={cx}

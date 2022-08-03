@@ -1,12 +1,12 @@
 export const ExpenseCategories = [
   {
-    color: '#9e3357', value: 'Transportation', label: 'Transportation', subcategories: ['Gas', 'Maintenance/Oil Change', 'Repairs', 'Tires', 'DMV', 'Parking Fees', 'Registration', 'Other'],
+    color: '#ffffb5', value: 'Transportation', label: 'Transportation', subcategories: ['Gas', 'Maintenance/Oil Change', 'Repairs', 'Tires', 'DMV', 'Parking Fees', 'Registration', 'Other'],
   },
   {
     color: '#c0cd1d', value: 'Food', label: 'Food', subcategories: ['Groceries', "Farmers' Market"],
   },
   {
-    color: '#0f51ba', value: 'Housing', label: 'Housing', subcategories: ['Rent', 'Furniture', 'Kitchen Supplies'],
+    color: '#55cbcd', value: 'Housing', label: 'Housing', subcategories: ['Rent', 'Furniture', 'Kitchen Supplies'],
   },
   {
     color: '#12d876', value: 'Utilities', label: 'Utilities', subcategories: ['Internet', 'Water', 'Electricity'],
@@ -18,7 +18,7 @@ export const ExpenseCategories = [
     color: '#bd5135', value: 'Health', label: 'Health', subcategories: ['Gym Membership', 'Doctor Appointments', 'Pharmacy', 'Other'],
   },
   {
-    color: '#9d87bd', value: 'Insurance', label: 'Insurance', subcategories: ['Renter Insurance', 'Vehicle Insurance', 'Medical Insurance', 'Dental Insurance', 'Vision Insurance'],
+    color: '#f3b0c3', value: 'Insurance', label: 'Insurance', subcategories: ['Renter Insurance', 'Vehicle Insurance', 'Medical Insurance', 'Dental Insurance', 'Vision Insurance'],
   },
   {
     color: '#1fc4d7', value: 'Discretionary', label: 'Discretionary', subcategories: ['Hobbies', 'Clothing'],

@@ -11,10 +11,12 @@ function RecentTransactionsCard() {
   }, [budget]);
 
   return (
-    <div className="card card-compact bg-neutral w-96 h-fit">
-      <div className="card-body">
-        <div className="card-title text-secondary">Recent Transactions</div>
-        { transactions.map((ele) => <TransactionCard key={ele._id} budgetItem={ele} />)}
+    <div className="flex flex-grow justify-center">
+      <div className="card card-compact bg-neutral w-96 h-min">
+        <div className="card-body">
+          <div className="card-title text-secondary">Recent Transactions</div>
+          { transactions.map((ele) => <TransactionCard key={ele._id} budgetItem={ele} />)}
+        </div>
       </div>
     </div>
   );

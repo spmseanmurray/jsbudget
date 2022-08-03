@@ -12,7 +12,12 @@ function StandardDatePicker({ selected, onChange, label }) {
         <span className="bg-base-300 w-16 px-3 flex flex-grow flex-col justify-center rounded-l-lg">
           <FontAwesomeIcon icon={faCalendar} size="xl" />
         </span>
-        <DatePicker className="input input-bordered rounded-l-none w-full" selected={selected} onChange={onChange} popperPlacement="right" />
+        <DatePicker
+          className="input input-bordered rounded-l-none w-full"
+          selected={selected}
+          onChange={onChange}
+          popperPlacement="top-start"
+        />
       </div>
     </div>
   );

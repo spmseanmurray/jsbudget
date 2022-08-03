@@ -22,17 +22,19 @@ function MonthlyTotalCard() {
   }, [expense, income]);
 
   return (
-    <div className="card card-compact bg-neutral w-96">
-      <div className="card-body">
-        <div className="flex flex-row justify-between">
-          <div className="card-title text-secondary">This Month</div>
-          {total.saving > 0
-            ? <div className="radial-progress text-success" style={{ '--value': total.saving, '--size': '3rem' }}>{`${total.saving}%`}</div>
-            : null}
-        </div>
-        <div className="stats">
-          <TotalStat title="Income" total={total.income} type="income" start={monthStart} end={monthEnd} />
-          <TotalStat title="Expenses" total={total.expense} type="expense" start={monthStart} end={monthEnd} />
+    <div className="flex flex-grow justify-center">
+      <div className="card card-compact bg-neutral w-96 h-min">
+        <div className="card-body">
+          <div className="flex flex-row justify-between">
+            <div className="card-title text-secondary">This Month</div>
+            {total.saving > 0
+              ? <div className="radial-progress text-success" style={{ '--value': total.saving, '--size': '3rem' }}>{`${total.saving}%`}</div>
+              : null}
+          </div>
+          <div className="stats">
+            <TotalStat title="Income" total={total.income} type="income" start={monthStart} end={monthEnd} />
+            <TotalStat title="Expenses" total={total.expense} type="expense" start={monthStart} end={monthEnd} />
+          </div>
         </div>
       </div>
     </div>

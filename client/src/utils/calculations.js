@@ -27,7 +27,9 @@ export const sumBudgetByCategoryAndSort = (budget, start, end) => budget.reduce(
   return res;
 }, []).sort((a, b) => a.total - b.total);
 
-export const sumBudgetByMonth = (budget) => budget.reduce((res, curr) => {
+export const sumBudgetByMonth = (budget, category = null) => budget.reduce((res, curr) => {
+  if (category && curr.budgetCategory !== category) return res;
+
   const labelIndex = res.findIndex(({ label }) => label === moment(curr.budgetDate).format('MMM, YYYY'));
 
   if (labelIndex !== -1) {

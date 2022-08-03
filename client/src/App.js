@@ -7,7 +7,7 @@ function App() {
   document.title = 'JS Budgeting';
 
   return (
-    <div className="flex w-screen h-screen justify-center">
+    <div className="flex w-screen h-screen justify-center scrollbar-hide">
       <ContextProvider>
         <BrowserRouter>
           <Routes />

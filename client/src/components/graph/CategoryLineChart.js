@@ -18,28 +18,34 @@ function CustomTooltip({ active, payload, label }) {
   return null;
 }
 
-function CategoryLineChart() {
+function CategoryLineChart({ category }) {
   const { expense, income } = useBudgetState();
   const [data, setData] = useState();
   const [average, setAverage] = useState();
 
   useEffect(() => {
-    setData(sumBudgetByMonth(expense).slice(1, 13).reverse());
-  }, [expense, income]);
+    if (category === 'Total Expenses') {
+      setData(sumBudgetByMonth(expense).slice(1, 13).reverse());
+    } else if (category === 'Total Income') {
+      setData(sumBudgetByMonth(income).slice(1, 13).reverse());
+    } else {
+      setData(sumBudgetByMonth(expense, category).slice(0, 12).reverse());
+    }
+  }, [expense, income, category]);
 
   useEffect(() => {
     if (data) setAverage(data.reduce((sum, curr) => sum + curr.total, 0) / data.length);
   }, [data]);
 
   return (
-    <div className="w-96 h-60">
+    <div className="w-96 h-80">
       <ResponsiveContainer width="100%" height="100%">
         <AreaChart
           data={data}
           dataKey="total"
           nameKey="label"
           margin={{
-            right: 15, left: 15,
+            right: 15, left: 15, top: 5,
           }}
         >
           <XAxis dataKey="label" interval={0} tickFormatter={(tick) => (tick ? tick.slice(0, 3) : '')} />
@@ -47,7 +53,7 @@ function CategoryLineChart() {
           <Tooltip content={<CustomTooltip />} />
           <Area type="monotoneX" dataKey="total" fill="#6419e6" stroke="#6419e6" />
           <ReferenceLine y={average} stroke="#A6ADBA" strokeDasharray="10 3">
-            <Label className="font-bold" fill="#A6ADBA" dy={60}>
+            <Label className="font-bold" fill="#A6ADBA" dy={-30}>
               {`AVERAGE $${average ? average.toFixed(2) : 0}`}
             </Label>
           </ReferenceLine>
