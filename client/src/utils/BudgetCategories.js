@@ -1,6 +1,6 @@
 export const ExpenseCategories = [
   {
-    color: '#ffffb5', value: 'Transportation', label: 'Transportation', subcategories: ['Gas', 'Maintenance/Oil Change', 'Repairs', 'Tires', 'DMV', 'Parking Fees', 'Registration', 'Other'],
+    color: '#ffffb5', value: 'Transportation', label: 'Transportation', subcategories: ['Gas', 'Maintenance', 'Repairs', 'Tires', 'DMV', 'Parking Fees', 'Registration', 'Other'],
   },
   {
     color: '#c0cd1d', value: 'Food', label: 'Food', subcategories: ['Groceries', "Farmers' Market"],

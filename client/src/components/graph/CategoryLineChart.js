@@ -25,11 +25,11 @@ function CategoryLineChart({ category }) {
 
   useEffect(() => {
     if (category === 'Total Expenses') {
-      setData(sumBudgetByMonth(expense).slice(1, 13).reverse());
+      setData(sumBudgetByMonth(expense));
     } else if (category === 'Total Income') {
-      setData(sumBudgetByMonth(income).slice(1, 13).reverse());
+      setData(sumBudgetByMonth(income));
     } else {
-      setData(sumBudgetByMonth(expense, category).slice(0, 12).reverse());
+      setData(sumBudgetByMonth(expense, category));
     }
   }, [expense, income, category]);
 

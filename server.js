@@ -1,12 +1,13 @@
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 const mongoose = require('mongoose');
 
 mongoose.Promise = global.Promise;
-const budgetRouter = require('./routes/budgetRoutes.js');
-const userRouter = require('./routes/userRoutes.js');
-const tokenRouter = require('./routes/tokenRoutes.js');
-const getClient = require('./db.js');
+const budgetRouter = require('./routes/budgetRoutes');
+const userRouter = require('./routes/userRoutes');
+const tokenRouter = require('./routes/tokenRoutes');
+const getClient = require('./db');
 
 require('dotenv').config();
 
@@ -22,7 +23,6 @@ app.use('/api', tokenRouter);
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));
-  const path = require('path');
   app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
   });
@@ -30,7 +30,5 @@ if (process.env.NODE_ENV === 'production') {
 
 app.listen(port, host, async () => {
   console.log(`Server is running on port ${port}`);
-  try {
-    await getClient();
-  } catch (err) { throw err; }
+  await getClient();
 });
