@@ -32,8 +32,8 @@ function YearlyTotalCard() {
               : null}
           </div>
           <div className="stats">
-            <TotalStat title="Income" total={total.income} type="income" start={yearStart} end={yearEnd} />
-            <TotalStat title="Expenses" total={total.expense} type="expense" start={yearStart} end={yearEnd} />
+            <TotalStat title="Income" total={total.income} type="income" />
+            <TotalStat title="Expenses" total={total.expense} type="expense" />
           </div>
         </div>
       </div>

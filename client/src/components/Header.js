@@ -16,7 +16,10 @@ function Header() {
   return (
     <div className="navbar bg-neutral text-neutral-content">
       <div className="navbar-start">
-        <button type="button" className="btn btn-ghost normal-case text-xl" onClick={() => history.push('./')}>JSBudget</button>
+        <button type="button" className="btn btn-ghost normal-case text-xl" onClick={() => history.push('./')}>
+          <div className="text-primary font-bold">JS</div>
+          Budget
+        </button>
       </div>
       <div className="navbar-end">
         <button type="button" className="btn btn-ghost" onClick={() => history.push('./history')}>Transaction History</button>

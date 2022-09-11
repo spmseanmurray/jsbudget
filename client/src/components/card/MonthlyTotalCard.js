@@ -6,18 +6,28 @@ import { calculateTotal } from '../../utils/calculations';
 
 function MonthlyTotalCard() {
   const { expense, income } = useBudgetState();
-  const [total, setTotal] = useState({ expense: 0, income: 0, saving: 0 });
+  const [total, setTotal] = useState({
+    expense: 0, income: 0, saving: 0, lastExpense: 0, lastIncome: 0,
+  });
   const monthStart = moment().startOf('month');
   const monthEnd = moment().endOf('month');
+  const lastMonthStart = moment().subtract(1, 'month').startOf('month');
+  const thisDayLastMonth = moment().subtract(1, 'month');
 
   useEffect(() => {
     const expenseTotal = calculateTotal(expense, monthStart, monthEnd);
     const incomeTotal = calculateTotal(income, monthStart, monthEnd);
     const savingTotal = ((incomeTotal - expenseTotal) / incomeTotal) * 100;
+
+    const lastExpenseTotal = calculateTotal(expense, lastMonthStart, thisDayLastMonth);
+    const lastIncomeTotal = calculateTotal(income, lastMonthStart, thisDayLastMonth);
+
     setTotal({
       expense: expenseTotal,
       income: incomeTotal,
       saving: savingTotal.toFixed(0),
+      lastExpense: lastExpenseTotal,
+      lastIncome: lastIncomeTotal,
     });
   }, [expense, income]);
 
@@ -32,8 +42,8 @@ function MonthlyTotalCard() {
               : null}
           </div>
           <div className="stats">
-            <TotalStat title="Income" total={total.income} type="income" start={monthStart} end={monthEnd} />
-            <TotalStat title="Expenses" total={total.expense} type="expense" start={monthStart} end={monthEnd} />
+            <TotalStat title="Income" total={total.income} type="income" relativeTotal={total.income - total.lastIncome} />
+            <TotalStat title="Expenses" total={total.expense} type="expense" relativeTotal={total.expense - total.lastExpense} />
           </div>
         </div>
       </div>
