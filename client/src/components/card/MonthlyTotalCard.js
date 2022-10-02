@@ -12,7 +12,7 @@ function MonthlyTotalCard() {
   const monthStart = moment().startOf('month');
   const monthEnd = moment().endOf('month');
   const lastMonthStart = moment().subtract(1, 'month').startOf('month');
-  const thisDayLastMonth = moment().subtract(1, 'month');
+  const thisDayLastMonth = moment().subtract(1, 'month').endOf('day');
 
   useEffect(() => {
     const expenseTotal = calculateTotal(expense, monthStart, monthEnd);

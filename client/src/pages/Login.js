@@ -11,6 +11,10 @@ function Login() {
   return (
     <div className="card w-full max-w-sm place-self-center shadow-xl bg-neutral">
       <div className="card-body">
+        <div className="card-title flex justify-center gap-0 text-2xl">
+          <div className="text-primary font-bold">JS</div>
+          Budget
+        </div>
         <StandardInput id="email" type="text" placeholder="Email Address" onChange={(input) => setEmail(input.target.value)} icon={faEnvelope} />
         <StandardInput id="password" type="password" placeholder="Password" onChange={(input) => setPassword(input.target.value)} icon={faLock} />
         <div className="flex justify-between">

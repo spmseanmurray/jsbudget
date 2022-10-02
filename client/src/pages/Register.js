@@ -20,6 +20,10 @@ function Register() {
   return (
     <div className="card w-full max-w-sm place-self-center shadow-xl bg-neutral">
       <div className="card-body">
+        <div className="card-title flex justify-center gap-0 text-2xl">
+          <div className="text-primary font-bold">JS</div>
+          Budget
+        </div>
         <StandardInput id="first" type="text" placeholder="First" onChange={(input) => handleChange(input.target.id, input.target.value)} />
         <StandardInput id="last" type="text" placeholder="Last" onChange={(input) => handleChange(input.target.id, input.target.value)} />
         <StandardInput id="email" type="text" placeholder="Email Address" onChange={(input) => handleChange(input.target.id, input.target.value)} />
