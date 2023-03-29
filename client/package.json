@@ -21,7 +21,8 @@
     "react-scripts": "5.0.0",
     "recharts": "^2.1.13",
     "tailwindcss": "^3.1.4",
-    "validator": "^13.7.0"
+    "validator": "^13.7.0",
+    "zustand": "^4.3.6"
   },
   "devDependencies": {
     "eslint": "7.32.0",

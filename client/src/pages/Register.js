@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import StandardInput from '../components/form/StandardInput';
-import { useUserActions } from '../contexts/UserContext';
+import useUserStore from '../store/user';
 
 function Register() {
-  const { register } = useUserActions();
+  const register = useUserStore((s) => s.register);
+  const history = useHistory();
   const [user, setUser] = useState({});
 
   const handleChange = (id, value) => {
@@ -13,7 +15,7 @@ function Register() {
   const handleSubmit = () => {
     if (user.password && user.passwordConfirm && (user.password === user.passwordConfirm)) {
       const { passwordConfirm, ...payload } = user;
-      register(payload);
+      register(payload).then(() => history.push('/'));
     }
   };
 
@@ -24,8 +26,8 @@ function Register() {
           <div className="text-primary font-bold">JS</div>
           Budget
         </div>
-        <StandardInput id="first" type="text" placeholder="First" onChange={(input) => handleChange(input.target.id, input.target.value)} />
-        <StandardInput id="last" type="text" placeholder="Last" onChange={(input) => handleChange(input.target.id, input.target.value)} />
+        <StandardInput id="firstName" type="text" placeholder="First" onChange={(input) => handleChange(input.target.id, input.target.value)} />
+        <StandardInput id="lastName" type="text" placeholder="Last" onChange={(input) => handleChange(input.target.id, input.target.value)} />
         <StandardInput id="email" type="text" placeholder="Email Address" onChange={(input) => handleChange(input.target.id, input.target.value)} />
         <StandardInput id="password" type="password" placeholder="Password" onChange={(input) => handleChange(input.target.id, input.target.value)} />
         <StandardInput id="passwordConfirm" type="password" placeholder="Confirm Password" onChange={(input) => handleChange(input.target.id, input.target.value)} />

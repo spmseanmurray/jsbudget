@@ -2,10 +2,10 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import { useHistory } from 'react-router-dom';
-import { useUserActions } from '../contexts/UserContext';
+import useUserStore from '../store/user';
 
 function Header() {
-  const { logout } = useUserActions();
+  const logout = useUserStore((s) => s.logout);
   const history = useHistory();
 
   const handleLogout = async () => {

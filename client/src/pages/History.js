@@ -23,7 +23,7 @@ function History() {
   const [descriptionFilter, setDescriptionFilter] = useState('');
 
   const filterByDescription = () => setFilteredBudget(budget.filter((budgetItem) => (
-    budgetItem.budgetDescription.toLowerCase().includes(descriptionFilter.toLowerCase())
+    budgetItem.description.toLowerCase().includes(descriptionFilter.toLowerCase())
   )));
 
   useEffect(() => {
@@ -53,7 +53,7 @@ function History() {
               </tr>
             </thead>
             <tbody>
-              {pageData.map((budgetItem) => <BudgetTableRow key={`budget-row-${budgetItem._id}`} budgetItem={budgetItem} />)}
+              {pageData.map((budgetItem) => <BudgetTableRow key={`budget-row-${budgetItem.id}`} budgetItem={budgetItem} />)}
             </tbody>
             <tfoot>
               <StandardTableFooter

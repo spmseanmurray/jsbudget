@@ -1,12 +1,12 @@
 import React from 'react';
 import { useBudgetModal } from '../../../../contexts/BudgetModalContext';
 import { useBudgetActions } from '../../../../contexts/BudgetContext';
-import { useUserState } from '../../../../contexts/UserContext';
+import useUserStore from '../../../../store/user';
 
 function NewTransactionFooter() {
   const { addBudget } = useBudgetActions();
   const [budgetModal, budgetModalActions] = useBudgetModal();
-  const user = useUserState();
+  const user = useUserStore((s) => s.user);
 
   const handleSubmit = () => {
     const payload = {

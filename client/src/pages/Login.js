@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
-import { useUserActions } from '../contexts/UserContext';
+import useUserStore from '../store/user';
 import StandardInput from '../components/form/StandardInput';
 
 function Login() {
-  const { login } = useUserActions();
+  const login = useUserStore((s) => s.login);
+  const history = useHistory();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -24,7 +26,13 @@ function Login() {
           </div>
           <a href="./reset" className="label-text-alt link link-hover text-accent">Forgot your password?</a>
         </div>
-        <button type="submit" className="btn btn-primary" onClick={() => login({ email, password })}>Login</button>
+        <button
+          type="submit"
+          className="btn btn-primary"
+          onClick={() => login({ email, password }).then(() => history.push('/'))}
+        >
+          Login
+        </button>
       </div>
     </div>
   );

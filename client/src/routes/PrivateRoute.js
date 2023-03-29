@@ -5,7 +5,7 @@ import Header from '../components/Header';
 import BudgetModal from '../components/modal/BudgetModal/BudgetModal';
 
 function PrivateRoute({ component: Component, path }) {
-  const sessionId = Cookies.get('jsb-session-id');
+  const sessionId = Cookies.get('jsbudget-session');
   if (sessionId) {
     const privateComponent = (
       <div className="flex flex-grow flex-col">
