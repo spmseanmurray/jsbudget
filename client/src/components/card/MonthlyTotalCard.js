@@ -1,11 +1,11 @@
 import moment from 'moment';
 import React, { useEffect, useState } from 'react';
-import { useBudgetState } from '../../contexts/BudgetContext';
 import TotalStat from '../stat/TotalStat';
 import { calculateTotal } from '../../utils/calculations';
+import useBudgetStore from '../../store/budget';
 
 function MonthlyTotalCard() {
-  const { expense, income } = useBudgetState();
+  const { expense, income } = useBudgetStore((s) => ({ expense: s.expense, income: s.income }));
   const [total, setTotal] = useState({
     expense: 0, income: 0, saving: 0, lastExpense: 0, lastIncome: 0,
   });

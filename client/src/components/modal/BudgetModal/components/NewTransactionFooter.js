@@ -1,25 +1,25 @@
 import React from 'react';
 import { useBudgetModal } from '../../../../contexts/BudgetModalContext';
-import { useBudgetActions } from '../../../../contexts/BudgetContext';
+import useBudgetStore from '../../../../store/budget';
 import useUserStore from '../../../../store/user';
 
 function NewTransactionFooter() {
-  const { addBudget } = useBudgetActions();
+  const addBudgetItem = useBudgetStore((s) => s.addBudgetItem);
   const [budgetModal, budgetModalActions] = useBudgetModal();
   const user = useUserStore((s) => s.user);
 
   const handleSubmit = () => {
     const payload = {
-      budgetType: budgetModal.type,
-      budgetDescription: budgetModal.description,
-      budgetAmount: budgetModal.amount,
-      budgetDate: budgetModal.date,
-      budgetCategory: budgetModal.category,
-      budgetSubcategory: budgetModal.subcategory,
-      _userId: user._id,
+      type: budgetModal.type,
+      description: budgetModal.description,
+      amount: budgetModal.amount,
+      date: budgetModal.date,
+      category: budgetModal.category,
+      subcategory: budgetModal.subcategory,
+      userId: user.id,
     };
 
-    addBudget(payload);
+    addBudgetItem(payload);
     budgetModalActions.resetBudgetModal();
   };
   return (

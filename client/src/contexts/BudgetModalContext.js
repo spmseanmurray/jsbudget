@@ -42,13 +42,13 @@ function BudgetModalProvider({ children }) {
   };
 
   const setBudgetModal = (budgetItem) => {
-    setId(budgetItem._id);
-    setType(budgetItem.budgetType);
-    setDescription(budgetItem.budgetDescription);
-    setAmount(budgetItem.budgetAmount.toFixed(2));
-    setDate(new Date(budgetItem.budgetDate));
-    setCategory(budgetItem.budgetCategory);
-    setSubcategory(budgetItem.budgetSubcategory);
+    setId(budgetItem.id);
+    setType(budgetItem.type);
+    setDescription(budgetItem.description);
+    setAmount(budgetItem.amount);
+    setDate(new Date(budgetItem.date));
+    setCategory(budgetItem.category);
+    setSubcategory(budgetItem.subcategory);
   };
 
   const budgetModal = useMemo(() => ({

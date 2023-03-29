@@ -2,26 +2,26 @@ import moment from 'moment';
 
 export function calculateTotal(data, start, end) {
   return data.reduce((sum, curr) => {
-    if (moment(curr.budgetDate).isBetween(start, end, undefined, '[]')) {
-      return sum + curr.budgetAmount;
+    if (moment(curr.date).isBetween(start, end, undefined, '[]')) {
+      return sum + curr.amount;
     }
     return sum;
   }, 0);
 }
 
 export const sumBudgetByCategoryAndSort = (budget, start, end) => budget.reduce((res, curr) => {
-  if (!(moment(curr.budgetDate).isBetween(start, end, undefined, '[]'))) {
+  if (!(moment(curr.date).isBetween(start, end, undefined, '[]'))) {
     return res;
   }
 
-  const categoryIndex = res.findIndex(({ category }) => category === curr.budgetCategory);
+  const categoryIndex = res.findIndex(({ category }) => category === curr.category);
 
   if (categoryIndex !== -1) {
-    res[categoryIndex].total += curr.budgetAmount;
+    res[categoryIndex].total += curr.amount;
   } else {
     res.push({
-      total: curr.budgetAmount,
-      category: curr.budgetCategory,
+      total: curr.amount,
+      category: curr.category,
     });
   }
   return res;
@@ -37,12 +37,12 @@ export const sumBudgetByMonth = (budget, category = null) => {
   }
 
   return budget.reduce((res, curr) => {
-    if (category && curr.budgetCategory !== category) return res;
+    if (category && curr.category !== category) return res;
 
-    const labelIndex = res.findIndex(({ label }) => label === moment(curr.budgetDate).format('MMM, YYYY'));
+    const labelIndex = res.findIndex(({ label }) => label === moment(curr.date).format('MMM, YYYY'));
 
     if (labelIndex !== -1) {
-      res[labelIndex].total += curr.budgetAmount;
+      res[labelIndex].total += curr.amount;
     }
 
     return res;

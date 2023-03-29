@@ -1,12 +1,11 @@
 import { create } from 'zustand';
 import moment from 'moment';
 import api from '../services/api';
-import useUserStore from './user';
 
 const useBudgetStore = create((set) => ({
-  budget: {},
-  expense: {},
-  income: {},
+  budget: [],
+  expense: [],
+  income: [],
   fetchBudget: () => api.get('/transactions')
     .then(({ data }) => set(() => ({
       budget: data,
@@ -52,12 +51,3 @@ const useBudgetStore = create((set) => ({
 }));
 
 export default useBudgetStore;
-
-useUserStore.subscribe(
-  (state) => state.user,
-  (user, prevUser) => {
-    if (user !== null && prevUser === null) {
-      useBudgetStore.fetchBudget();
-    }
-  },
-);

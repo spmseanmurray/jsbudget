@@ -4,7 +4,7 @@ import {
 } from 'recharts';
 import moment from 'moment';
 import { ExpenseCategories } from '../../utils/BudgetCategories';
-import { useBudgetState } from '../../contexts/BudgetContext';
+import useBudgetStore from '../../store/budget';
 import { sumBudgetByCategoryAndSort } from '../../utils/calculations';
 
 const renderActiveShape = (props) => {
@@ -44,7 +44,7 @@ const renderActiveShape = (props) => {
 };
 
 function CategoryPieChart() {
-  const { expense } = useBudgetState();
+  const expense = useBudgetStore((s) => s.expense);
   const [data, setData] = useState();
   const startDate = moment().startOf('month');
   const endDate = moment().endOf('month');

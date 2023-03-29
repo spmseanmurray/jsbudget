@@ -1,11 +1,11 @@
 import moment from 'moment';
 import React, { useState, useEffect } from 'react';
-import { useBudgetState } from '../../contexts/BudgetContext';
+import useBudgetStore from '../../store/budget';
 import TotalStat from '../stat/TotalStat';
 import { calculateTotal } from '../../utils/calculations';
 
 function YearlyTotalCard() {
-  const { expense, income } = useBudgetState();
+  const { expense, income } = useBudgetStore((s) => ({ expense: s.expense, income: s.income }));
   const [total, setTotal] = useState({ expense: 0, income: 0, saving: 0 });
   const yearStart = moment().startOf('year');
   const yearEnd = moment().endOf('year');

@@ -11,7 +11,7 @@ function BudgetTableRow({ budgetItem }) {
     budgetModalActions.setBudgetModal(budgetItem);
     setModal({ ...modal, budget: true });
   };
-  console.log(budgetItem);
+
   return (
     <tr className="hover w-full" onClick={handleClick}>
       <td className="bg-neutral bg-opacity-50 w-full">{moment(budgetItem.date).format('MMMM D, YYYY')}</td>
@@ -26,12 +26,12 @@ function BudgetTableRow({ budgetItem }) {
         {budgetItem.type === 'INCOME'
           ? (
             <div className="font-bold text-success">
-              {`+${budgetItem.amount.toFixed(2)}`}
+              {`+${budgetItem.amount}`}
             </div>
           )
           : (
             <div className="font-bold text-error">
-              {`-${budgetItem.amount.toFixed(2)}`}
+              {`-${budgetItem.amount}`}
             </div>
           )}
 

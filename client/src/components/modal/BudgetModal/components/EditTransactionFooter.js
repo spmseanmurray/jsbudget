@@ -1,30 +1,32 @@
 import React from 'react';
 import { useBudgetModal } from '../../../../contexts/BudgetModalContext';
-import { useBudgetActions } from '../../../../contexts/BudgetContext';
+import useBudgetStore from '../../../../store/budget';
 import { useModal } from '../../../../contexts/ModalContext';
 
 function EditTransactionFooter() {
-  const { updateBudget, removeBudget } = useBudgetActions();
+  const { updateBudgetItem, removeBudgetItem } = useBudgetStore((s) => (
+    { updateBudgetItem: s.updateBudgetItem, removeBudgetItem: s.removeBudgetItem }
+  ));
   const [modal, setModal] = useModal();
   const [budgetModal, budgetModalActions] = useBudgetModal();
 
   const handleUpdate = () => {
     const payload = {
-      budgetType: budgetModal.type,
-      budgetDescription: budgetModal.description,
-      budgetAmount: budgetModal.amount,
-      budgetDate: budgetModal.date,
-      budgetCategory: budgetModal.category,
-      budgetSubcategory: budgetModal.subcategory,
+      type: budgetModal.type,
+      description: budgetModal.description,
+      amount: budgetModal.amount,
+      date: budgetModal.date,
+      category: budgetModal.category,
+      subcategory: budgetModal.subcategory,
     };
 
-    updateBudget(budgetModal.id, payload);
+    updateBudgetItem(budgetModal.id, payload);
     budgetModalActions.resetBudgetModal();
     setModal({ ...modal, budget: false });
   };
 
   const handleDelete = () => {
-    removeBudget(budgetModal.id);
+    removeBudgetItem(budgetModal.id);
     budgetModalActions.resetBudgetModal();
     setModal({ ...modal, budget: false });
   };

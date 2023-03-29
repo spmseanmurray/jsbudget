@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {
   ResponsiveContainer, AreaChart, Area, XAxis, ReferenceLine, Tooltip, Label, YAxis,
 } from 'recharts';
-import { useBudgetState } from '../../contexts/BudgetContext';
+import useBudgetStore from '../../store/budget';
 import { sumBudgetByMonth } from '../../utils/calculations';
 
 function CustomTooltip({ active, payload, label }) {
@@ -19,7 +19,7 @@ function CustomTooltip({ active, payload, label }) {
 }
 
 function CategoryLineChart({ category }) {
-  const { expense, income } = useBudgetState();
+  const { expense, income } = useBudgetStore((s) => ({ expense: s.expense, income: s.income }));
   const [data, setData] = useState();
   const [average, setAverage] = useState();
 

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import TransactionCard from './TransactionCard';
-import { useBudgetState } from '../../contexts/BudgetContext';
+import useBudgetStore from '../../store/budget';
 
 function RecentTransactionsCard() {
-  const { budget } = useBudgetState();
+  const budget = useBudgetStore((s) => s.budget);
   const [transactions, setTransactions] = useState([]);
 
   useEffect(() => {
@@ -15,7 +15,7 @@ function RecentTransactionsCard() {
       <div className="card card-compact bg-neutral w-96 h-min">
         <div className="card-body">
           <div className="card-title text-secondary">Recent Transactions</div>
-          { transactions.map((ele) => <TransactionCard key={ele._id} budgetItem={ele} />)}
+          { transactions.map((ele) => <TransactionCard key={ele.id} budgetItem={ele} />)}
         </div>
       </div>
     </div>

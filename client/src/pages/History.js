@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useBudgetState } from '../contexts/BudgetContext';
+import useBudgetStore from '../store/budget';
 import BudgetTableRow from '../components/table/BudgetTableRow';
 import StandardTableFooter from '../components/table/StandardTableFooter';
 import StandardSearch from '../components/form/StandardSearch';
@@ -15,7 +15,7 @@ const BUDGET_TABLE_COLUMNS = [
 ];
 
 function History() {
-  const { budget } = useBudgetState();
+  const budget = useBudgetStore((s) => s.budget);
   const [filteredBudget, setFilteredBudget] = useState([]);
   const [pageData, setPageData] = useState([]);
   const [pageIndex, setPageIndex] = useState(0);
