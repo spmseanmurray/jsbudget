@@ -3,14 +3,16 @@ import { useHistory } from 'react-router-dom';
 import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
 import useUserStore from '../store/user';
 import StandardInput from '../components/form/StandardInput';
-import useBudgetStore from '../store/budget';
 
 function Login() {
   const login = useUserStore((s) => s.login);
-  const fetchBudget = useBudgetStore((s) => s.fetchBudget);
   const history = useHistory();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const onLogin = () => {
+    login({ email, password }).then(() => history.push('/'));
+  };
 
   return (
     <div className="card w-full max-w-sm place-self-center shadow-xl bg-neutral">
@@ -31,7 +33,7 @@ function Login() {
         <button
           type="submit"
           className="btn btn-primary"
-          onClick={() => login({ email, password }).then(() => fetchBudget()).then(() => history.push('/'))}
+          onClick={onLogin}
         >
           Login
         </button>

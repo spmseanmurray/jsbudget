@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import CategoryLineChart from '../graph/CategoryLineChart';
-import { ExpenseCategories } from '../../utils/BudgetCategories';
+import useCategoriesStore from '../../store/categories';
 
 function CategoryLineChartCard() {
+  const expenseCategories = useCategoriesStore((s) => s.expenseCategories);
   const [category, setCategory] = useState('Total Expenses');
-  const options = ['Total Expenses', 'Total Income', ...ExpenseCategories.map((cat) => cat.value)];
+  const options = ['Total Expenses', 'Total Income', ...expenseCategories.map((cat) => cat.value)];
 
   return (
     <div className="flex flex-grow justify-center">

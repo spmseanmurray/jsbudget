@@ -3,7 +3,7 @@ import {
   ResponsiveContainer, PieChart, Pie, Sector, Cell,
 } from 'recharts';
 import moment from 'moment';
-import { ExpenseCategories } from '../../utils/BudgetCategories';
+import useCategoriesStore from '../../store/categories';
 import useBudgetStore from '../../store/budget';
 import { sumBudgetByCategoryAndSort } from '../../utils/calculations';
 
@@ -45,6 +45,7 @@ const renderActiveShape = (props) => {
 
 function CategoryPieChart() {
   const expense = useBudgetStore((s) => s.expense);
+  const expenseCategories = useCategoriesStore((s) => s.expenseCategories);
   const [data, setData] = useState();
   const startDate = moment().startOf('month');
   const endDate = moment().endOf('month');
@@ -76,7 +77,7 @@ function CategoryPieChart() {
           >
             {
             data && data.map((entry) => (
-              <Cell key={entry.category} fill={ExpenseCategories.find((cat) => cat.label === entry.category).color} strokeWidth="0" />
+              <Cell key={entry.category} fill={expenseCategories.find((cat) => cat.label === entry.category).color} strokeWidth="0" />
             ))
             }
           </Pie>

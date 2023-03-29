@@ -3,13 +3,20 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import { useHistory } from 'react-router-dom';
 import useUserStore from '../store/user';
+import useBudgetStore from '../store/budget';
+import useCategoriesStore from '../store/categories';
 
 function Header() {
   const logout = useUserStore((s) => s.logout);
+  const resetBudget = useBudgetStore((s) => s.resetBudget);
+  const resetCategories = useCategoriesStore((s) => s.resetCategories);
   const history = useHistory();
 
   const handleLogout = async () => {
     await logout();
+    resetBudget();
+    resetCategories();
+
     history.push('/login');
   };
 

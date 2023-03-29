@@ -1,12 +1,15 @@
 import React, {
   createContext, useContext, useState, useMemo, useEffect,
 } from 'react';
-import { ExpenseCategories, IncomeCategories } from '../utils/BudgetCategories';
+import useCategoriesStore from '../store/categories';
 
 const BudgetModalState = createContext();
 const BudgetModalActions = createContext();
 
 function BudgetModalProvider({ children }) {
+  const { incomeCategories, expenseCategories } = useCategoriesStore((s) => (
+    { incomeCategories: s.incomeCategories, expenseCategories: s.expenseCategories }
+  ));
   const [id, setId] = useState();
   const [type, setType] = useState('expense');
   const [description, setDescription] = useState('');
@@ -18,8 +21,8 @@ function BudgetModalProvider({ children }) {
   const [subcategories, setSubcategories] = useState([]);
 
   useEffect(() => {
-    if (type === 'income') setCategories(IncomeCategories);
-    if (type === 'expense') setCategories(ExpenseCategories);
+    if (type === 'income') setCategories(incomeCategories);
+    if (type === 'expense') setCategories(expenseCategories);
     if (!id) setCategory('');
   }, [type]);
 
