@@ -23,8 +23,8 @@ function BudgetModal() {
             {budgetModal.id ? <EditTransactionHeader /> : <NewTransactionHeader /> }
             <StandardInput type="text" placeholder="Description" value={budgetModal.description} onChange={(input) => budgetModalActions.setDescription(input.target.value)} />
             <div className="w-full grid grid-cols-2 gap-4">
-              <StandardSelect placeholder="Category" options={budgetModal.categories.map((cat) => cat.value)} value={budgetModal.category} onChange={(input) => budgetModalActions.setCategory(input.target.value)} />
-              <StandardSelect placeholder="Subcategory" options={budgetModal.subcategories} value={budgetModal.subcategory} onChange={(input) => budgetModalActions.setSubcategory(input.target.value)} />
+              <StandardSelect placeholder="Category" options={budgetModal.categories.map((cat) => cat.category)} value={budgetModal.category} onChange={(input) => budgetModalActions.setCategory(input.target.value)} />
+              <StandardSelect placeholder="Subcategory" options={budgetModal.subcategories.map((subcat) => subcat.subcategory)} value={budgetModal.subcategory} onChange={(input) => budgetModalActions.setSubcategory(input.target.value)} />
             </div>
             <div className="w-full grid grid-cols-2 gap-4">
               <StandardDatePicker label="Date" selected={budgetModal.date} onChange={(input) => budgetModalActions.setDate(input)} />

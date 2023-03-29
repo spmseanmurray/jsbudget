@@ -26,12 +26,12 @@ function BudgetTableRow({ budgetItem }) {
         {budgetItem.type === 'INCOME'
           ? (
             <div className="font-bold text-success">
-              {`+${budgetItem.amount}`}
+              {`+${budgetItem.amount.toFixed(2)}`}
             </div>
           )
           : (
             <div className="font-bold text-error">
-              {`-${budgetItem.amount}`}
+              {`-${budgetItem.amount.toFixed(2)}`}
             </div>
           )}
 

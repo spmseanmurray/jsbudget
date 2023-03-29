@@ -11,7 +11,7 @@ function BudgetModalProvider({ children }) {
     { incomeCategories: s.incomeCategories, expenseCategories: s.expenseCategories }
   ));
   const [id, setId] = useState();
-  const [type, setType] = useState('expense');
+  const [type, setType] = useState('EXPENSE');
   const [description, setDescription] = useState('');
   const [amount, setAmount] = useState('');
   const [date, setDate] = useState(new Date());
@@ -21,13 +21,13 @@ function BudgetModalProvider({ children }) {
   const [subcategories, setSubcategories] = useState([]);
 
   useEffect(() => {
-    if (type === 'income') setCategories(incomeCategories);
-    if (type === 'expense') setCategories(expenseCategories);
+    if (type === 'INCOME') setCategories(incomeCategories);
+    if (type === 'EXPENSE') setCategories(expenseCategories);
     if (!id) setCategory('');
-  }, [type]);
+  }, [type, incomeCategories, expenseCategories]);
 
   useEffect(() => {
-    const selectedCategory = categories.find((cat) => cat.label === category) || {};
+    const selectedCategory = categories.find((cat) => cat.category === category) || {};
     setSubcategories(
       Object.hasOwn(selectedCategory, 'subcategories') ? selectedCategory.subcategories : [],
     );
@@ -36,7 +36,7 @@ function BudgetModalProvider({ children }) {
 
   const resetBudgetModal = () => {
     setId();
-    setType('expense');
+    setType('EXPENSE');
     setDescription('');
     setAmount('');
     setDate(new Date());
@@ -50,8 +50,8 @@ function BudgetModalProvider({ children }) {
     setDescription(budgetItem.description);
     setAmount(budgetItem.amount);
     setDate(new Date(budgetItem.date));
-    setCategory(budgetItem.category);
-    setSubcategory(budgetItem.subcategory);
+    setCategory(budgetItem.category.category);
+    setSubcategory(budgetItem.subcategory?.subcategory || '');
   };
 
   const budgetModal = useMemo(() => ({

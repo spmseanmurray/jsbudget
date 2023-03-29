@@ -13,7 +13,7 @@ export const sumBudgetByCategoryAndSort = (budget, start, end) => budget.reduce(
   if (!(moment(curr.date).isBetween(start, end, undefined, '[]'))) {
     return res;
   }
-  console.log(res, curr);
+
   const categoryIndex = res.findIndex(({ category }) => category === curr.category.category);
 
   if (categoryIndex !== -1) {

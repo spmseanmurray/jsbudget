@@ -1,5 +1,4 @@
 import { create } from 'zustand';
-import moment from 'moment';
 import api from '../services/api';
 
 let fetchBudgetPromise = null;
@@ -23,7 +22,7 @@ const useBudgetStore = create((set) => ({
   addBudgetItem: async (payload) => api.post('/transactions', payload)
     .then(({ data }) => set(({ budget }) => {
       const updatedBudget = [data, ...budget]
-        .sort((a, b) => moment(a.date).isBefore(b.date));
+        .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
       return {
         budget: updatedBudget,
         expense: updatedBudget.filter((budgetItem) => budgetItem.type === 'EXPENSE'),

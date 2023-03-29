@@ -7,8 +7,8 @@ function BudgetSelectType() {
   const [budgetModal, budgetModalActions] = useBudgetModal();
 
   return (
-    <button type="button" className="btn btn-sm" onClick={() => budgetModalActions.setType(budgetModal.type === 'expense' ? 'income' : 'expense')}>
-      {budgetModal.type === 'expense'
+    <button type="button" className="btn btn-sm" onClick={() => budgetModalActions.setType(budgetModal.type === 'EXPENSE' ? 'INCOME' : 'EXPENSE')}>
+      {budgetModal.type === 'EXPENSE'
         ? (
           <div className="flex flex-row justify-center items-center gap-3">
             <FontAwesomeIcon className="swap-off text-error" size="xl" icon={faCreditCard} />

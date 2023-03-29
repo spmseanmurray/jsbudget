@@ -1,22 +1,25 @@
 import React from 'react';
+import moment from 'moment';
 import { useBudgetModal } from '../../../../contexts/BudgetModalContext';
 import useBudgetStore from '../../../../store/budget';
-import useUserStore from '../../../../store/user';
+import useCategoriesStore from '../../../../store/categories';
 
 function NewTransactionFooter() {
   const addBudgetItem = useBudgetStore((s) => s.addBudgetItem);
+  const categories = useCategoriesStore((s) => s.categories);
   const [budgetModal, budgetModalActions] = useBudgetModal();
-  const user = useUserStore((s) => s.user);
 
   const handleSubmit = () => {
+    console.log(budgetModal.subcategory);
     const payload = {
       type: budgetModal.type,
       description: budgetModal.description,
       amount: budgetModal.amount,
-      date: budgetModal.date,
-      category: budgetModal.category,
-      subcategory: budgetModal.subcategory,
-      userId: user.id,
+      date: moment(budgetModal.date).format('yyyy-MM-DD'),
+      categoryId: categories.find((cat) => cat.category === budgetModal.category).id,
+      subcategoryId: categories
+        .find((cat) => cat.category === budgetModal.category)?.subcategories
+        .find((subcat) => subcat.subcategory === budgetModal.subcategory)?.id,
     };
 
     addBudgetItem(payload);

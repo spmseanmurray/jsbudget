@@ -1,12 +1,15 @@
 import React from 'react';
+import moment from 'moment';
 import { useBudgetModal } from '../../../../contexts/BudgetModalContext';
 import useBudgetStore from '../../../../store/budget';
+import useCategoriesStore from '../../../../store/categories';
 import { useModal } from '../../../../contexts/ModalContext';
 
 function EditTransactionFooter() {
-  const { updateBudgetItem, removeBudgetItem } = useBudgetStore((s) => (
-    { updateBudgetItem: s.updateBudgetItem, removeBudgetItem: s.removeBudgetItem }
+  const { updateBudgetItem, deleteBudgetItem } = useBudgetStore((s) => (
+    { updateBudgetItem: s.updateBudgetItem, deleteBudgetItem: s.deleteBudgetItem }
   ));
+  const categories = useCategoriesStore((s) => s.categories);
   const [modal, setModal] = useModal();
   const [budgetModal, budgetModalActions] = useBudgetModal();
 
@@ -15,18 +18,20 @@ function EditTransactionFooter() {
       type: budgetModal.type,
       description: budgetModal.description,
       amount: budgetModal.amount,
-      date: budgetModal.date,
-      category: budgetModal.category,
-      subcategory: budgetModal.subcategory,
+      date: moment(budgetModal.date).format('yyyy-MM-DD'),
+      categoryId: categories.find((cat) => cat.category === budgetModal.category).id,
+      subcategoryId: categories
+        .find((cat) => cat.category === budgetModal.category).subcategories
+        .find((subcat) => subcat.subcategory === budgetModal.subcategory).id,
     };
 
-    updateBudgetItem(budgetModal.id, payload);
+    updateBudgetItem(payload, budgetModal.id);
     budgetModalActions.resetBudgetModal();
     setModal({ ...modal, budget: false });
   };
 
   const handleDelete = () => {
-    removeBudgetItem(budgetModal.id);
+    deleteBudgetItem(budgetModal.id);
     budgetModalActions.resetBudgetModal();
     setModal({ ...modal, budget: false });
   };
