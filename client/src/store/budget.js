@@ -13,8 +13,8 @@ const useBudgetStore = create((set) => ({
       fetchBudgetPromise = api.get('/transactions')
         .then(({ data }) => set(() => ({
           budget: data,
-          expense: data.filter((budgetItem) => budgetItem.type === 'expense'),
-          income: data.filter((budgetItem) => budgetItem.type === 'income'),
+          expense: data.filter((budgetItem) => budgetItem.type === 'EXPENSE'),
+          income: data.filter((budgetItem) => budgetItem.type === 'INCOME'),
         })))
         .catch(() => console.log('Failed to fetch budget'));
     }
@@ -26,8 +26,8 @@ const useBudgetStore = create((set) => ({
         .sort((a, b) => moment(a.date).isBefore(b.date));
       return {
         budget: updatedBudget,
-        expense: updatedBudget.filter((budgetItem) => budgetItem.type === 'expense'),
-        income: updatedBudget.filter((budgetItem) => budgetItem.type === 'income'),
+        expense: updatedBudget.filter((budgetItem) => budgetItem.type === 'EXPENSE'),
+        income: updatedBudget.filter((budgetItem) => budgetItem.type === 'INCOME'),
       };
     }))
     .catch(() => console.log('Failed to add budget item')),
@@ -39,8 +39,8 @@ const useBudgetStore = create((set) => ({
       });
       return {
         budget: updatedBudget,
-        expense: updatedBudget.filter((budgetItem) => budgetItem.type === 'expense'),
-        income: updatedBudget.filter((budgetItem) => budgetItem.type === 'income'),
+        expense: updatedBudget.filter((budgetItem) => budgetItem.type === 'EXPENSE'),
+        income: updatedBudget.filter((budgetItem) => budgetItem.type === 'INCOME'),
       };
     }))
     .catch(() => console.log('Failed to update budget item')),
@@ -49,8 +49,8 @@ const useBudgetStore = create((set) => ({
       const updatedBudget = budget.filter((budgetItem) => (budgetItem.id !== budgetId));
       return {
         budget: updatedBudget,
-        expense: updatedBudget.filter((budgetItem) => budgetItem.type === 'expense'),
-        income: updatedBudget.filter((budgetItem) => budgetItem.type === 'income'),
+        expense: updatedBudget.filter((budgetItem) => budgetItem.type === 'EXPENSE'),
+        income: updatedBudget.filter((budgetItem) => budgetItem.type === 'INCOME'),
       };
     }))
     .catch(() => console.log('Failed to delete budget item')),

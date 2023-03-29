@@ -5,6 +5,9 @@ module.exports = {
   },
   extends: ['airbnb'],
   plugins: ['react'],
+  parserOptions: {
+    ecmaVersion: 2020,
+  },
   rules: {
     'linebreak-style': 0,
     'react/prop-types': 0,

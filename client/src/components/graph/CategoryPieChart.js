@@ -77,7 +77,7 @@ function CategoryPieChart() {
           >
             {
             data && data.map((entry) => (
-              <Cell key={entry.category} fill={expenseCategories.find((cat) => cat.label === entry.category).color} strokeWidth="0" />
+              <Cell key={entry.category} fill={expenseCategories.find((cat) => cat.category === entry.category)?.color || '#ffffff'} strokeWidth="0" />
             ))
             }
           </Pie>
