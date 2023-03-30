@@ -1,9 +1,10 @@
 import { create } from 'zustand';
+import { subscribeWithSelector } from 'zustand/middleware';
 import api from '../services/api';
 
 let fetchCategoriesPromise = null;
 
-const useCategoriesStore = create((set) => ({
+const useCategoriesStore = create(subscribeWithSelector((set) => ({
   categories: [],
   incomeCategories: [],
   expenseCategories: [],
@@ -29,6 +30,6 @@ const useCategoriesStore = create((set) => ({
       expenseCategories: [],
     }));
   },
-}));
+})));
 
 export default useCategoriesStore;

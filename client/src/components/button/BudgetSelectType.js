@@ -1,13 +1,15 @@
 import React from 'react';
 import { faCreditCard, faPiggyBank } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useBudgetModal } from '../../contexts/BudgetModalContext';
+import useBudgetModalStore from '../../store/budgetModal';
 
 function BudgetSelectType() {
-  const [budgetModal, budgetModalActions] = useBudgetModal();
+  const { budgetModal, setType } = useBudgetModalStore((s) => (
+    { budgetModal: s.budgetModal, setType: s.setType }
+  ));
 
   return (
-    <button type="button" className="btn btn-sm" onClick={() => budgetModalActions.setType(budgetModal.type === 'EXPENSE' ? 'INCOME' : 'EXPENSE')}>
+    <button type="button" className="btn btn-sm" onClick={() => setType(budgetModal.type === 'EXPENSE' ? 'INCOME' : 'EXPENSE')}>
       {budgetModal.type === 'EXPENSE'
         ? (
           <div className="flex flex-row justify-center items-center gap-3">

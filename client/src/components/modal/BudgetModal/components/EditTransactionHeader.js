@@ -1,9 +1,9 @@
 import React from 'react';
-import { useBudgetModalState } from '../../../../contexts/BudgetModalContext';
+import useBudgetModalStore from '../../../../store/budgetModal';
 import usePageStore from '../../../../store/page';
 
 function EditTransactionHeader() {
-  const budgetModal = useBudgetModalState();
+  const budgetModal = useBudgetModalStore((s) => s.budgetModal);
   const toggleModal = usePageStore((s) => s.toggleModal);
 
   return (

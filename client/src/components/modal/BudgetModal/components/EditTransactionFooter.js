@@ -1,6 +1,6 @@
 import React from 'react';
 import moment from 'moment';
-import { useBudgetModal } from '../../../../contexts/BudgetModalContext';
+import useBudgetModalStore from '../../../../store/budgetModal';
 import useBudgetStore from '../../../../store/budget';
 import useCategoriesStore from '../../../../store/categories';
 import usePageStore from '../../../../store/page';
@@ -12,7 +12,9 @@ function EditTransactionFooter() {
   const categories = useCategoriesStore((s) => s.categories);
   const toggleModal = usePageStore((s) => s.toggleModal);
 
-  const [budgetModal, budgetModalActions] = useBudgetModal();
+  const { budgetModal, resetBudgetModal } = useBudgetModalStore((s) => (
+    { budgetModal: s.budgetModal, resetBudgetModal: s.resetBudgetModal }
+  ));
 
   const handleUpdate = () => {
     const payload = {
@@ -27,13 +29,13 @@ function EditTransactionFooter() {
     };
 
     updateBudgetItem(payload, budgetModal.id);
-    budgetModalActions.resetBudgetModal();
+    resetBudgetModal();
     toggleModal();
   };
 
   const handleDelete = () => {
     deleteBudgetItem(budgetModal.id);
-    budgetModalActions.resetBudgetModal();
+    resetBudgetModal();
     toggleModal();
   };
   return (
