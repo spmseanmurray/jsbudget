@@ -8,15 +8,15 @@ import NewTransactionFooter from './components/NewTransactionFooter';
 import EditTransactionHeader from './components/EditTransactionHeader';
 import EditTransactionFooter from './components/EditTransactionFooter';
 import { useBudgetModal } from '../../../contexts/BudgetModalContext';
-import { useModalState } from '../../../contexts/ModalContext';
+import usePageStore from '../../../store/page';
 
 function BudgetModal() {
   const [budgetModal, budgetModalActions] = useBudgetModal();
-  const modal = useModalState();
+  const modal = usePageStore((s) => s.modal);
 
   return (
     <>
-      <input type="checkbox" id="budget-modal" className="modal-toggle" checked={modal.budget} readOnly />
+      <input type="checkbox" id="budget-modal" className="modal-toggle" checked={modal} readOnly />
       <div className="modal modal-bottom sm:modal-middle">
         <div className="modal-box relative w-96">
           <div className="card-body p-0">

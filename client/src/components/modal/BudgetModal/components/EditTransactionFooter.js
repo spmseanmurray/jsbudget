@@ -3,14 +3,15 @@ import moment from 'moment';
 import { useBudgetModal } from '../../../../contexts/BudgetModalContext';
 import useBudgetStore from '../../../../store/budget';
 import useCategoriesStore from '../../../../store/categories';
-import { useModal } from '../../../../contexts/ModalContext';
+import usePageStore from '../../../../store/page';
 
 function EditTransactionFooter() {
   const { updateBudgetItem, deleteBudgetItem } = useBudgetStore((s) => (
     { updateBudgetItem: s.updateBudgetItem, deleteBudgetItem: s.deleteBudgetItem }
   ));
   const categories = useCategoriesStore((s) => s.categories);
-  const [modal, setModal] = useModal();
+  const toggleModal = usePageStore((s) => s.toggleModal);
+
   const [budgetModal, budgetModalActions] = useBudgetModal();
 
   const handleUpdate = () => {
@@ -27,13 +28,13 @@ function EditTransactionFooter() {
 
     updateBudgetItem(payload, budgetModal.id);
     budgetModalActions.resetBudgetModal();
-    setModal({ ...modal, budget: false });
+    toggleModal();
   };
 
   const handleDelete = () => {
     deleteBudgetItem(budgetModal.id);
     budgetModalActions.resetBudgetModal();
-    setModal({ ...modal, budget: false });
+    toggleModal();
   };
   return (
     <div className="modal-action">

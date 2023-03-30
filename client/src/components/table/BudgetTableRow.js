@@ -1,15 +1,15 @@
 import React from 'react';
 import moment from 'moment';
 import { useBudgetModalActions } from '../../contexts/BudgetModalContext';
-import { useModal } from '../../contexts/ModalContext';
+import usePageStore from '../../store/page';
 
 function BudgetTableRow({ budgetItem }) {
   const budgetModalActions = useBudgetModalActions();
-  const [modal, setModal] = useModal();
+  const toggleModal = usePageStore((s) => s.toggleModal);
 
   const handleClick = () => {
     budgetModalActions.setBudgetModal(budgetItem);
-    setModal({ ...modal, budget: true });
+    toggleModal();
   };
 
   return (

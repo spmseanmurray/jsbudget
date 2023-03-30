@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import ContextProvider from './contexts/ContextProvider';
+import { BudgetModalProvider } from './contexts/BudgetModalContext';
 import Routes from './routes/routes';
 
 function App() {
@@ -8,11 +8,11 @@ function App() {
 
   return (
     <div className="flex w-screen h-screen justify-center scrollbar-hide">
-      <ContextProvider>
+      <BudgetModalProvider>
         <BrowserRouter>
           <Routes />
         </BrowserRouter>
-      </ContextProvider>
+      </BudgetModalProvider>
     </div>
   );
 }

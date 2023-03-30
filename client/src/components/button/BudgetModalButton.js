@@ -1,16 +1,16 @@
 import { faAdd } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
-import { useModal } from '../../contexts/ModalContext';
+import usePageStore from '../../store/page';
 import { useBudgetModalActions } from '../../contexts/BudgetModalContext';
 
 function BudgetModalButton() {
-  const [modal, setModal] = useModal();
+  const toggleModal = usePageStore((s) => s.toggleModal);
   const budgetModalActions = useBudgetModalActions();
 
   const handleClick = () => {
     budgetModalActions.resetBudgetModal();
-    setModal({ ...modal, budget: true });
+    toggleModal();
   };
 
   return (
