@@ -12,7 +12,6 @@ function NewTransactionFooter() {
   ));
 
   const handleSubmit = () => {
-    console.log(budgetModal.subcategory);
     const payload = {
       type: budgetModal.type,
       description: budgetModal.description,

@@ -37,7 +37,7 @@ export const sumBudgetByMonth = (budget, category = null) => {
   }
 
   return budget.reduce((res, curr) => {
-    if (category && curr.category !== category) return res;
+    if (category && curr.category.category !== category) return res;
 
     const labelIndex = res.findIndex(({ label }) => label === moment(curr.date).format('MMM, YYYY'));
 

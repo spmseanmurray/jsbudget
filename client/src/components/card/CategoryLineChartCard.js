@@ -5,7 +5,7 @@ import useCategoriesStore from '../../store/categories';
 function CategoryLineChartCard() {
   const expenseCategories = useCategoriesStore((s) => s.expenseCategories);
   const [category, setCategory] = useState('Total Expenses');
-  const options = ['Total Expenses', 'Total Income', ...expenseCategories.map((cat) => cat.value)];
+  const options = ['Total Expenses', 'Total Income', ...expenseCategories.map((cat) => cat.category)];
 
   return (
     <div className="flex flex-grow justify-center">

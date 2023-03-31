@@ -42,7 +42,7 @@ const useBudgetModalStore = create((set, get) => ({
       categoryOptions: type === 'EXPENSE' ? useCategoriesStore.getState().expenseCategories : useCategoriesStore.getState().incomeCategories,
     }
   )),
-  setDesciption: (description) => set(({ budgetModal }) => (
+  setDescription: (description) => set(({ budgetModal }) => (
     { budgetModal: { ...budgetModal, description } }
   )),
   setAmount: (amount) => set(({ budgetModal }) => ({ budgetModal: { ...budgetModal, amount } })),
@@ -51,7 +51,7 @@ const useBudgetModalStore = create((set, get) => ({
     const selectedCategory = get().categoryOptions
       .find((cat) => cat.category === categoryName) || {};
     return {
-      budgetModal: { ...budgetModal, categoryName },
+      budgetModal: { ...budgetModal, category: categoryName },
       subcategoryOptions: Object.hasOwn(selectedCategory, 'subcategories') ? selectedCategory.subcategories : [],
     };
   }),
