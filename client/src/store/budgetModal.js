@@ -35,7 +35,6 @@ const useBudgetModalStore = create((set, get) => ({
     budgetModal: initialBudgetModal,
     subcategoryOptions: [],
   })),
-  setId: (id) => set(({ budgetModal }) => ({ budgetModal: { ...budgetModal, id } })),
   setType: (type) => set(({ budgetModal }) => (
     {
       budgetModal: { ...budgetModal, type },

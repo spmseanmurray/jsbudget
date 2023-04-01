@@ -9,7 +9,7 @@ function BudgetTableRow({ budgetItem }) {
 
   const handleClick = () => {
     setBudgetModal(budgetItem);
-    toggleModal();
+    toggleModal('budget');
   };
 
   return (

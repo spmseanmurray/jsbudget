@@ -1,12 +1,20 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircle } from '@fortawesome/free-solid-svg-icons';
+import usePageStore from '../../../store/page';
+import useCategoryModalStore from '../../../store/categoryModal';
 
 function Category({ category = {} }) {
+  const toggleModal = usePageStore((s) => s.toggleModal);
+  const setCategoryModal = useCategoryModalStore((s) => s.setCategoryModal);
+
   return (
     <button
       className="flex flex-row items-center mx-1 p-2 gap-x-3 bg-neutral hover:bg-neutral-focus rounded-3xl"
-      onClick={() => console.log('Update category')}
+      onClick={() => {
+        setCategoryModal(category);
+        toggleModal('category');
+      }}
       type="button"
     >
       <FontAwesomeIcon icon={faCircle} size="2xl" color={category.color} />
@@ -19,7 +27,7 @@ function Category({ category = {} }) {
                 {subcategory.subcategory}
               </div>
             ))
-        }
+          }
         </div>
       </div>
     </button>

@@ -25,7 +25,7 @@ function BudgetModal() {
 
   return (
     <>
-      <input type="checkbox" id="budget-modal" className="modal-toggle" checked={modal} readOnly />
+      <input type="checkbox" id="budget-modal" className="modal-toggle" checked={modal.budget} readOnly />
       <div className="modal modal-bottom sm:modal-middle">
         <div className="modal-box relative w-96">
           <div className="card-body p-0">

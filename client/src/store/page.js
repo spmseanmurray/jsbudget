@@ -1,10 +1,13 @@
 import { create } from 'zustand';
 
 const usePageStore = create((set) => ({
-  modal: false,
+  modal: {
+    budget: false,
+    category: false,
+  },
   error: null,
-  toggleModal: () => {
-    set(({ modal }) => ({ modal: !modal }));
+  toggleModal: (modalName) => {
+    set(({ modal }) => ({ modal: { ...modal, [modalName]: !modal[modalName] } }));
   },
 }));
 

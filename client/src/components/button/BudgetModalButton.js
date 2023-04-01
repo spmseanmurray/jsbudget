@@ -10,7 +10,7 @@ function BudgetModalButton() {
 
   const handleClick = () => {
     resetBudgetModal();
-    toggleModal();
+    toggleModal('budget');
   };
 
   return (

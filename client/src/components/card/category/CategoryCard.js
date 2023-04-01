@@ -3,6 +3,8 @@ import { faAdd } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Category from './Category';
 import useCategoriesStore from '../../../store/categories';
+import usePageStore from '../../../store/page';
+import useCategoryModalStore from '../../../store/categoryModal';
 import CategoryCardFooter from './CategoryCardFooter';
 
 const ITEMS_PER_PAGE = 3;
@@ -11,6 +13,8 @@ function CategoryCard({ type = 'EXPENSE' }) {
   const { expenseCategories, incomeCategories } = useCategoriesStore((s) => (
     { expenseCategories: s.expenseCategories, incomeCategories: s.incomeCategories }
   ));
+  const toggleModal = usePageStore((s) => s.toggleModal);
+  const resetCategoryModal = useCategoryModalStore((s) => s.resetCategoryModal);
   const [pageIndex, setPageIndex] = useState(0);
   const [numPages, setNumPages] = useState(0);
 
@@ -28,7 +32,7 @@ function CategoryCard({ type = 'EXPENSE' }) {
         <div className="card-body">
           <div className="card-title text-secondary flex flex-row justify-between">
             {type === 'EXPENSE' ? 'Expense Categories' : 'Income Categories'}
-            <button type="button" className="btn btn-primary btn-sm btn-square" onClick={() => console.log('Add new category')}>
+            <button type="button" className="btn btn-primary btn-sm btn-square" onClick={() => { resetCategoryModal(); toggleModal('category'); }}>
               <FontAwesomeIcon icon={faAdd} size="lg" />
             </button>
           </div>

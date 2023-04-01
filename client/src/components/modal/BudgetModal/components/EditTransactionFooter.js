@@ -30,13 +30,13 @@ function EditTransactionFooter() {
 
     updateBudgetItem(payload, budgetModal.id);
     resetBudgetModal();
-    toggleModal();
+    toggleModal('budget');
   };
 
   const handleDelete = () => {
     deleteBudgetItem(budgetModal.id);
     resetBudgetModal();
-    toggleModal();
+    toggleModal('budget');
   };
   return (
     <div className="modal-action">

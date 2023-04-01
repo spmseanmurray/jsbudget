@@ -6,6 +6,7 @@ import useBudgetStore from '../store/budget';
 import useCategoriesStore from '../store/categories';
 import Header from '../components/Header';
 import BudgetModal from '../components/modal/BudgetModal/BudgetModal';
+import CategoryModal from '../components/modal/CategoryModal/CategoryModal';
 
 function PrivateRoute({ component: Component, path }) {
   const { user, fetchUser } = useUserStore((s) => ({ user: s.user, fetchUser: s.fetchUser }));
@@ -25,6 +26,7 @@ function PrivateRoute({ component: Component, path }) {
     const privateComponent = (
       <div className="flex flex-grow flex-col">
         <BudgetModal />
+        <CategoryModal />
         <Header />
         <Component />
       </div>
