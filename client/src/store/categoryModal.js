@@ -28,8 +28,8 @@ const useCategoryModalStore = create((set) => ({
   setColor: (color) => set(({ categoryModal }) => (
     { categoryModal: { ...categoryModal, color } }
   )),
-  setSubcategories: (category) => set(({ categoryModal }) => (
-    { categoryModal: { ...categoryModal, category } }
+  setSubcategories: (subcategories) => set(({ categoryModal }) => (
+    { categoryModal: { ...categoryModal, subcategories } }
   )),
 }));
 
