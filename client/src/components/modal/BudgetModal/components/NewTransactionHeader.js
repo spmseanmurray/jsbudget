@@ -10,7 +10,7 @@ function NewTransactionHeader() {
       <div className="flex flex-grow flex-col gap-2">
         <div className="flex flex-row flex-grow justify-between">
           <h3 className="text-lg font-bold">Add a New Transaction</h3>
-          <button type="button" className="btn btn-sm btn-circle btn-primary" onClick={() => toggleModal('budget')}>✕</button>
+          <button type="button" className="btn btn-sm btn-circle" onClick={() => toggleModal('budget')}>✕</button>
         </div>
         <BudgetSelectType />
       </div>

@@ -4,7 +4,7 @@ const initialCategoryModal = {
   id: null,
   type: 'EXPENSE',
   category: '',
-  color: '',
+  color: '#ffffff',
   subcategories: [],
 };
 
@@ -16,7 +16,7 @@ const useCategoryModalStore = create((set) => ({
       type: category.type,
       category: category.category,
       color: category.color,
-      subcategories: category.subcategories.map((subcat) => subcat.subcategory),
+      subcategories: category.subcategories,
     },
   })),
   resetCategoryModal: () => set(() => ({

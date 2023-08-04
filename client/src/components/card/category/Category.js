@@ -23,8 +23,8 @@ function Category({ category = {} }) {
         <div className="flex flex-row flex-wrap gap-1">
           {
             category?.subcategories?.map((subcategory) => (
-              <div key={subcategory.id} className="badge badge-outline self-center">
-                {subcategory.subcategory}
+              <div key={subcategory} className="badge badge-outline self-center">
+                {subcategory}
               </div>
             ))
           }
