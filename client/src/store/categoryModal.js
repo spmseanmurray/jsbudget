@@ -19,8 +19,8 @@ const useCategoryModalStore = create((set) => ({
       subcategories: category.subcategories,
     },
   })),
-  resetCategoryModal: () => set(() => ({
-    categoryModal: initialCategoryModal,
+  resetCategoryModal: (type = 'EXPENSE') => set(() => ({
+    categoryModal: { ...initialCategoryModal, type },
   })),
   setCategory: (category) => set(({ categoryModal }) => (
     { categoryModal: { ...categoryModal, category } }

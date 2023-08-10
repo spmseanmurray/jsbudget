@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 function CategoryCardFooter({ pageIndex, numPages, setPageIndex }) {
   return (
     <div className="flex flex-row w-full justify-between place-self-end">
-      <div className="space-x-2">
+      <div className="space-x-2 ml-2">
         <button type="submit" className="btn btn-primary btn-xs" onClick={(() => setPageIndex(0))} disabled={pageIndex <= 1}>
           <FontAwesomeIcon icon={faAnglesLeft} size="xl" />
         </button>
@@ -16,7 +16,7 @@ function CategoryCardFooter({ pageIndex, numPages, setPageIndex }) {
         </button>
       </div>
       <div>{`${pageIndex + 1}/${numPages + 1}`}</div>
-      <div className="space-x-2">
+      <div className="space-x-2 mr-2">
         <button type="submit" className="btn btn-primary btn-xs" onClick={(() => setPageIndex(pageIndex + 1))} disabled={pageIndex >= numPages}>
           <FontAwesomeIcon icon={faAngleRight} size="xl" />
         </button>

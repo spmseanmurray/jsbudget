@@ -32,7 +32,7 @@ function CategoryCard({ type = 'EXPENSE' }) {
         <div className="card-body">
           <div className="card-title text-secondary flex flex-row justify-between">
             {type === 'EXPENSE' ? 'Expense Categories' : 'Income Categories'}
-            <button type="button" className="btn btn-primary btn-sm btn-square" onClick={() => { resetCategoryModal(); toggleModal('category'); }}>
+            <button type="button" className="btn btn-primary btn-sm btn-square" onClick={() => { resetCategoryModal(type); toggleModal('category'); }}>
               <FontAwesomeIcon icon={faAdd} size="lg" />
             </button>
           </div>

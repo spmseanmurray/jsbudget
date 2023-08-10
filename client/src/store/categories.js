@@ -23,16 +23,16 @@ const useCategoriesStore = create(subscribeWithSelector((set) => ({
     return fetchCategoriesPromise;
   },
   addCategory: async (payload) => api.post('/categories', payload)
-    .then(({ category }) => set(({ categories, incomeCategories, expenseCategories }) => ({
-      categories: [category, ...categories],
-      incomeCategories: category.type === 'INCOME' ? [category, ...incomeCategories] : incomeCategories,
-      expenseCategories: category.type === 'EXPENSE' ? [category, ...expenseCategories] : expenseCategories,
+    .then(({ data }) => set(({ categories, incomeCategories, expenseCategories }) => ({
+      categories: [data, ...categories],
+      incomeCategories: data.type === 'INCOME' ? [data, ...incomeCategories] : incomeCategories,
+      expenseCategories: data.type === 'EXPENSE' ? [data, ...expenseCategories] : expenseCategories,
     })))
     .catch(() => console.log('Failed to create category')),
   updateCategory: async (payload, categoryId) => api.put(`/categories/${categoryId}`, payload)
-    .then(({ updatedCategory }) => set(({ categories }) => {
+    .then(({ data }) => set(({ categories }) => {
       const updatedCategories = categories.map((category) => {
-        if (category.id === updatedCategory.id) return updatedCategory;
+        if (category.id === data.id) return data;
         return category;
       });
       return {

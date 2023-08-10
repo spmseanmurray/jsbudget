@@ -12,6 +12,7 @@ function NewCategoryFooter() {
     addCategory(categoryModal);
     resetCategoryModal();
   };
+
   return (
     <div className="modal-action">
       <button type="submit" className="btn btn-primary btn-block" onClick={() => handleSubmit()}>Submit</button>
