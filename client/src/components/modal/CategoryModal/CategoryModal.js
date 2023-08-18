@@ -68,10 +68,8 @@ function CategoryModal() {
                     <button
                       type="button"
                       className="btn w-3.5 h-3.5 min-h-0 p-0 btn-circle btn-outline ml-1 -mr-1"
-                      onClick={() => setSubcategories(
-                        categoryModal.subcategories
-                          .filter((ele) => ele.subcategory !== subcat),
-                      )}
+                      onClick={() => setSubcategories(categoryModal.subcategories
+                        .toSpliced(categoryModal.subcategories.indexOf(subcat), 1))}
                     >
                       <FontAwesomeIcon size="xs" icon={faXmark} />
                     </button>
