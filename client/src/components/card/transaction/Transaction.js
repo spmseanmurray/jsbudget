@@ -11,7 +11,7 @@ function TransactionCard({ budgetItem = {} }) {
         </div>
       </div>
       <div className="flex flex-row justify-between">
-        <div>{`${budgetItem.category.category}${budgetItem.subcategory.subcategory ? ` - ${budgetItem.subcategory.subcategory}` : ''}`}</div>
+        <div>{`${budgetItem.category.category}${budgetItem.subcategory ? ` - ${budgetItem.subcategory}` : ''}`}</div>
         <div>{moment(budgetItem.date).format('MMMM D, YYYY')}</div>
       </div>
     </div>

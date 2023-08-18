@@ -20,7 +20,7 @@ function BudgetTableRow({ budgetItem }) {
         <div className="badge">{budgetItem.category.category}</div>
       </td>
       <td className="bg-neutral bg-opacity-50 w-full">
-        {budgetItem.subcategory ? <div className="badge">{budgetItem.subcategory.subcategory}</div> : null}
+        {budgetItem.subcategory ? <div className="badge">{budgetItem.subcategory}</div> : null}
       </td>
       <td className="bg-neutral bg-opacity-50 w-full">
         {budgetItem.type === 'INCOME'

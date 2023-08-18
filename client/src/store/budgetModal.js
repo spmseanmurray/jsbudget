@@ -16,6 +16,7 @@ const useBudgetModalStore = create((set, get) => ({
   categoryOptions: useCategoriesStore.getState().expenseCategories,
   subcategoryOptions: [],
   setBudgetModal: (budgetItem) => set(() => {
+    get().setType(budgetItem.type);
     const selectedCategory = get().categoryOptions
       .find((cat) => cat.id === budgetItem.category.id) || {};
     return {
@@ -26,7 +27,7 @@ const useBudgetModalStore = create((set, get) => ({
         amount: budgetItem.amount,
         date: new Date(budgetItem.date),
         category: budgetItem.category.category,
-        subcategory: budgetItem.subcategory.subcategory || '',
+        subcategory: budgetItem.subcategory,
       },
       subcategoryOptions: Object.hasOwn(selectedCategory, 'subcategories') ? selectedCategory.subcategories : [],
     };

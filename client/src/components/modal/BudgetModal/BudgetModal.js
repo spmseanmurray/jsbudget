@@ -33,7 +33,7 @@ function BudgetModal() {
             <StandardInput type="text" placeholder="Description" value={budgetModal.description} onChange={(input) => setDescription(input.target.value)} />
             <div className="w-full grid grid-cols-2 gap-4">
               <StandardSelect placeholder="Category" options={categoryOptions.map((cat) => cat.category)} value={budgetModal.category} onChange={(input) => setCategory(input.target.value)} />
-              <StandardSelect placeholder="Subcategory" options={subcategoryOptions.map((subcat) => subcat.subcategory)} value={budgetModal.subcategory} onChange={(input) => setSubcategory(input.target.value)} />
+              <StandardSelect placeholder="Subcategory" options={subcategoryOptions} value={budgetModal.subcategory} onChange={(input) => setSubcategory(input.target.value)} />
             </div>
             <div className="w-full grid grid-cols-2 gap-4">
               <StandardDatePicker label="Date" selected={budgetModal.date} onChange={(input) => setDate(input)} />

@@ -23,9 +23,7 @@ function EditTransactionFooter() {
       amount: budgetModal.amount,
       date: moment(budgetModal.date).format('yyyy-MM-DD'),
       categoryId: categories.find((cat) => cat.category === budgetModal.category).id,
-      subcategoryId: categories
-        .find((cat) => cat.category === budgetModal.category).subcategories
-        .find((subcat) => subcat.subcategory === budgetModal.subcategory).id,
+      subcategory: budgetModal.subcategory,
     };
 
     updateBudgetItem(payload, budgetModal.id);
